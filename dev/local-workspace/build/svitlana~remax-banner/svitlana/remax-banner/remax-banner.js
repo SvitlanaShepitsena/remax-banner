@@ -1,39 +1,41 @@
 //    ? path to your project
+'use strict';
+
 FamousFramework.component('svitlana:remax-banner', {
     behaviors: {
         '#root': {
             'style': {
-                'perspective': '1000px',
+                'perspective': '1000px'
             }
         },
         '#rotator-node': {
             'position-z': function (rootZ) {
-                return rootZ
+                return rootZ;
             },
             'size': function (contextSize) {
-                return [contextSize, contextSize]
+                return [contextSize, contextSize];
             },
             'align': [0.5, 0.5],
             'mount-point': [0.5, 0.5],
             'origin': [0.5, 0.5],
             'rotation': function (rotationValue) {
-                return [-Math.PI / 2, 0, rotationValue]
+                return [-Math.PI / 2, 0, rotationValue];
             }
         },
         '.gallery-item': {
-            'size': [100, 100]
-            ,
+            'size': [100, 100],
+
             '$repeat': function (srcs) {
-                return srcs
+                return srcs;
             },
             'position-x': function ($index, contextSize) {
-                return Math.random() * contextSize
+                return Math.random() * contextSize;
             },
             'position-y': function ($index, contextSize) {
-                return Math.random() * contextSize
+                return Math.random() * contextSize;
             },
             'position-z': function ($index, positionZ) {
-                return positionZ[$index]
+                return positionZ[$index];
             },
             'rotation': [Math.PI / 2, 0, 0],
             'src': function ($index, srcs) {
@@ -47,7 +49,7 @@ FamousFramework.component('svitlana:remax-banner', {
                 var id = $famousNode.addComponent({
                     onUpdate: function (time) {
                         for (var i = 0; i < $state.get('srcs').length; i++) {
-                            var currentZ = $state.get(['positionZ', i])
+                            var currentZ = $state.get(['positionZ', i]);
                             // if image is out of screen move it back to bottom
                             if (currentZ < -$state.get('contextSize')) {
                                 currentZ = $state.get('contextSize') / 1.5 + 100;
@@ -64,10 +66,10 @@ FamousFramework.component('svitlana:remax-banner', {
             'click': function ($state) {
                 $state.set('rotationValue', $state.get('rotationValue') - Math.PI / 2, {
                     duration: 1000,
-                    curve: 'easeIn',
-                }).thenSet('rotationValue', $state.get('rotationValue') - (Math.PI * 2), {
+                    curve: 'easeIn'
+                }).thenSet('rotationValue', $state.get('rotationValue') - Math.PI * 2, {
                     duration: 2000,
-                    curve: 'easeOut',
+                    curve: 'easeOut'
                 });
 
                 $state.set('rootZ', -500, {
@@ -77,7 +79,6 @@ FamousFramework.component('svitlana:remax-banner', {
                     duration: 2000,
                     curve: 'easeInOut'
                 });
-
             }
         }
     },
@@ -90,10 +91,7 @@ FamousFramework.component('svitlana:remax-banner', {
     },
     tree: 'tree.html'
 }).config({
-    includes: [
-        'galleryData.js',
-        'remax-banner.css'
-    ],
+    includes: ['galleryData.js', 'remax-banner.css'],
     imports: {
         'svitlana:remax-banner': ['house']
     }

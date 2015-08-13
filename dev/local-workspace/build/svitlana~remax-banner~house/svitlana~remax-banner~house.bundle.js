@@ -332,13 +332,13 @@ FamousFramework.includes("svitlana:remax-banner:house", "HEAD", [], function() {
                     'origin': [
                         0.5,
                         0.5
-                    ]
-                },
-                'img': {
+                    ],
                     'size': [
                         30,
                         30
-                    ],
+                    ]
+                },
+                'img': {
                     'align': [
                         0.5,
                         0.5

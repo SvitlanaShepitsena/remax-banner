@@ -454,13 +454,13 @@ FamousFramework.includes("svitlana:remax-banner", "HEAD", ["svitlana/remax-banne
                     'origin': [
                         0.5,
                         0.5
-                    ]
-                },
-                'img': {
+                    ],
                     'size': [
                         30,
                         30
-                    ],
+                    ]
+                },
+                'img': {
                     'align': [
                         0.5,
                         0.5
@@ -475,6 +475,10 @@ FamousFramework.includes("svitlana:remax-banner", "HEAD", ["svitlana/remax-banne
                     ],
                     'src': function (src) {
                         return src;
+                    },
+                    'style': {
+                        'width': '100px',
+                        'height': '100px'
                     }
                 }
             },

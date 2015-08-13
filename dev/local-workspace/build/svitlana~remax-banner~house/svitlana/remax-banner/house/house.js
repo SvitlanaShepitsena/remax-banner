@@ -5,10 +5,10 @@ FamousFramework.component('svitlana:remax-banner:house', {
         '#house': {
             'align': [0.5, 0.5],
             'mount-point': [0.5, 0.5],
-            'origin': [0.5, 0.5]
+            'origin': [0.5, 0.5],
+            'size': [30, 30]
         },
         'img': {
-            'size': [30, 30],
             'align': [0.5, 0.5],
             'mount-point': [0.5, 0.5],
             'origin': [0.5, 0.5],

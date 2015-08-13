@@ -429,6 +429,34 @@ FamousFramework.includes("svitlana:remax-banner", "HEAD", ["svitlana/remax-banne
     }());
     (function(){
         'use strict';
+        FamousFramework.component('svitlana:remax-banner:logo', 'HEAD', {
+            'dependencies': { 'famous:core:node': 'HEAD' },
+            'famousNodeConstructorName': '',
+            'extensions': [{
+                    'name': 'famous:core:node',
+                    'version': 'HEAD'
+                }],
+            'expose': {
+                'type': 'ObjectExpression',
+                'properties': []
+            }
+        }, {
+            behaviors: {
+                '#logo': {
+                    'size': [
+                        120,
+                        120
+                    ]
+                },
+                'img': { 'src': 'https://s3-us-west-2.amazonaws.com/svet.com/ad/remax1stclass/remax-logo.png' }
+            },
+            events: {},
+            states: { imgSrc: null },
+            tree: '<famous:core:node id="logo">\n    <img>\n    </famous:core:node>'
+        });
+    }());
+    (function(){
+        'use strict';
         FamousFramework.component('svitlana:remax-banner:house', 'HEAD', {
             'dependencies': { 'famous:core:node': 'HEAD' },
             'famousNodeConstructorName': '',
@@ -454,10 +482,6 @@ FamousFramework.includes("svitlana:remax-banner", "HEAD", ["svitlana/remax-banne
                     'origin': [
                         0.5,
                         0.5
-                    ],
-                    'size': [
-                        30,
-                        30
                     ]
                 },
                 'img': {
@@ -477,8 +501,8 @@ FamousFramework.includes("svitlana:remax-banner", "HEAD", ["svitlana/remax-banne
                         return src;
                     },
                     'style': {
-                        'width': '100px',
-                        'height': '100px'
+                        'width': '160px',
+                        'height': '160px'
                     }
                 }
             },
@@ -494,27 +518,16 @@ FamousFramework.includes("svitlana:remax-banner", "HEAD", ["svitlana/remax-banne
         });
     }());
     (function(){
-        var contextSize = window.innerHeight;
+        var windowHeight = window.innerHeight;
+        var windowWidth = window.innerWidth;
         function randomCoordinates(imageData) {
             var result = [];
             for (var i = 0; i < imageData.length; i++) {
-                result.push(Math.floor(contextSize / 2 + 100 + Math.random() * contextSize * 2));
+                result.push(Math.floor(windowHeight / 2 + Math.random() * windowHeight * 2));
             }
             return result;
         }
         var imageData = [
-            'https://s3-us-west-2.amazonaws.com/svet.com/ad/remax1stclass/arliyn-tratt-1115-bradford-ln-shaumburg.jpg',
-            'https://s3-us-west-2.amazonaws.com/svet.com/ad/remax1stclass/arliyn-tratt-1222-calibou-ln-hoffman-estates.jpg',
-            'https://s3-us-west-2.amazonaws.com/svet.com/ad/remax1stclass/arliyn-tratt-2110-laramie-chicago.jpg',
-            'https://s3-us-west-2.amazonaws.com/svet.com/ad/remax1stclass/arliyn-tratt-8910-knox-ave-skokie.jpg',
-            'https://s3-us-west-2.amazonaws.com/svet.com/ad/remax1stclass/arliyn-tratt-1115-bradford-ln-shaumburg.jpg',
-            'https://s3-us-west-2.amazonaws.com/svet.com/ad/remax1stclass/arliyn-tratt-1222-calibou-ln-hoffman-estates.jpg',
-            'https://s3-us-west-2.amazonaws.com/svet.com/ad/remax1stclass/arliyn-tratt-2110-laramie-chicago.jpg',
-            'https://s3-us-west-2.amazonaws.com/svet.com/ad/remax1stclass/arliyn-tratt-8910-knox-ave-skokie.jpg',
-            'https://s3-us-west-2.amazonaws.com/svet.com/ad/remax1stclass/arliyn-tratt-1115-bradford-ln-shaumburg.jpg',
-            'https://s3-us-west-2.amazonaws.com/svet.com/ad/remax1stclass/arliyn-tratt-1222-calibou-ln-hoffman-estates.jpg',
-            'https://s3-us-west-2.amazonaws.com/svet.com/ad/remax1stclass/arliyn-tratt-2110-laramie-chicago.jpg',
-            'https://s3-us-west-2.amazonaws.com/svet.com/ad/remax1stclass/arliyn-tratt-8910-knox-ave-skokie.jpg',
             'https://s3-us-west-2.amazonaws.com/svet.com/ad/remax1stclass/arliyn-tratt-1115-bradford-ln-shaumburg.jpg',
             'https://s3-us-west-2.amazonaws.com/svet.com/ad/remax1stclass/arliyn-tratt-1222-calibou-ln-hoffman-estates.jpg',
             'https://s3-us-west-2.amazonaws.com/svet.com/ad/remax1stclass/arliyn-tratt-2110-laramie-chicago.jpg',
@@ -525,6 +538,7 @@ FamousFramework.includes("svitlana:remax-banner", "HEAD", ["svitlana/remax-banne
             'dependencies': {
                 'famous:events': 'HEAD',
                 'famous:core:node': 'HEAD',
+                'svitlana:remax-banner:logo': 'HEAD',
                 'svitlana:remax-banner:house': 'HEAD'
             },
             'famousNodeConstructorName': '',
@@ -539,23 +553,37 @@ FamousFramework.includes("svitlana:remax-banner", "HEAD", ["svitlana/remax-banne
         }, {
             behaviors: {
                 '#root': { 'style': { 'perspective': '1000px' } },
+                '#logo': {
+                    'align': [
+                        0.1,
+                        0.1
+                    ],
+                    'mount-point': [
+                        0.1,
+                        0.1
+                    ],
+                    'origin': [
+                        0.1,
+                        0.1
+                    ]
+                },
                 '#rotator-node': {
                     'position-z': function (rootZ) {
                         return rootZ;
                     },
-                    'size': function (contextSize) {
+                    'size': function (windowHeight) {
                         return [
-                            contextSize,
-                            contextSize
+                            windowHeight,
+                            windowHeight
                         ];
                     },
                     'align': [
-                        0.5,
-                        0.5
+                        0.12,
+                        0.12
                     ],
                     'mount-point': [
-                        0.5,
-                        0.5
+                        0,
+                        0
                     ],
                     'origin': [
                         0.5,
@@ -570,18 +598,14 @@ FamousFramework.includes("svitlana:remax-banner", "HEAD", ["svitlana/remax-banne
                     }
                 },
                 '.gallery-item': {
-                    'size': [
-                        100,
-                        100
-                    ],
                     '$repeat': function (srcs) {
                         return srcs;
                     },
-                    'position-x': function ($index, contextSize) {
-                        return Math.random() * contextSize;
+                    'position-x': function ($index, windowHeight, windowWidth) {
+                        return Math.random() * windowWidth;
                     },
-                    'position-y': function ($index, contextSize) {
-                        return Math.random() * contextSize;
+                    'position-y': function ($index, windowHeight) {
+                        return Math.random() * windowHeight;
                     },
                     'position-z': function ($index, positionZ) {
                         return positionZ[$index];
@@ -606,8 +630,8 @@ FamousFramework.includes("svitlana:remax-banner", "HEAD", ["svitlana/remax-banne
                                         'positionZ',
                                         i
                                     ]);
-                                    if (currentZ < -$state.get('contextSize')) {
-                                        currentZ = $state.get('contextSize') / 1.5 + 100;
+                                    if (currentZ < -$state.get('windowHeight')) {
+                                        currentZ = $state.get('windowHeight') / 1.5 + 100;
                                     }
                                     $state.set([
                                         'positionZ',
@@ -640,19 +664,25 @@ FamousFramework.includes("svitlana:remax-banner", "HEAD", ["svitlana/remax-banne
                 }
             },
             states: {
+                windowHeight: windowHeight,
+                windowWidth: windowWidth,
                 rotationValue: 0,
                 srcs: imageData,
-                contextSize: contextSize,
                 positionZ: randomCoordinates(imageData),
                 rootZ: 0
             },
-            tree: '<famous:core:node id="root">\n    <famous:core:node id="rotator-node">\n        <svitlana:remax-banner:house class="gallery-item"></svitlana:remax-banner:house>\n    </famous:core:node>\n</famous:core:node>'
+            tree: '<famous:core:node id="root">\n    <svitlana:remax-banner:logo id="logo"></svitlana:remax-banner:logo>\n\n        <famous:core:node id="rotator-node">\n            <svitlana:remax-banner:house class="gallery-item"></svitlana:remax-banner:house>\n        </famous:core:node>\n</famous:core:node>'
         }).config({
             includes: [
                 'galleryData.js',
                 'remax-banner.css'
             ],
-            imports: { 'svitlana:remax-banner': ['house'] }
+            imports: {
+                'svitlana:remax-banner': [
+                    'house',
+                    'logo'
+                ]
+            }
         });
     }());
     FamousFramework.markComponentAsReady("svitlana:remax-banner", "HEAD");

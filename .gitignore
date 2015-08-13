@@ -1,5 +1,7 @@
-node_modules
+logs/*
+!.gitkeep
+node_modules/
+tmp
 .DS_Store
-*.log
-*.bundle.js
-dev/local-workspace/build/*
+.idea
+app/jspm_packages

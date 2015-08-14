@@ -15,9 +15,11 @@ FamousFramework.component('svitlana:remax-banner', {
         },
 
         '#footerRemax': {
-            'align': [0.5, 1],
-            'origin': [0.5, 1],
-            'mount-point': [0.5, 1]
+            'align': [0.5, .5],
+            'origin': [0.5, .5],
+            'mount-point': [0.5, .5],
+            'size': [100, 100]
+
         },
         '#slogan': {
             'align': [0.5, 1],
@@ -115,6 +117,6 @@ FamousFramework.component('svitlana:remax-banner', {
 }).config({
     includes: ['galleryData.js', 'remax-banner.css'],
     imports: {
-        'svitlana:remax-banner': ['house', 'logo', 'footer', 'slogan']
+        'svitlana:remax-banner': ['house', 'logo', 'footer-remax', 'slogan']
     }
 });

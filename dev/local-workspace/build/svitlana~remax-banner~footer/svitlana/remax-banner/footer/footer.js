@@ -1,3 +1,5 @@
+'use strict';
+
 FamousFramework.component('svitlana:remax-banner:footer', {
     behaviors: {
         '#footerRemax': {
@@ -6,12 +8,11 @@ FamousFramework.component('svitlana:remax-banner:footer', {
             'mount-point': [0, 1],
             'size': [700, 100],
             'style': {
-                'background-color': 'green',
-            },
+                'background-color': 'green'
+            }
         }
     },
     events: {},
     states: {},
-    tree: `<node id="footer">
-    </node>`,
+    tree: '<node id="footerRemax">\n    </node>'
 });

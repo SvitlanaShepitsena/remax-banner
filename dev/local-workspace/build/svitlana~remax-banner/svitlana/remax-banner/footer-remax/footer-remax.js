@@ -1,11 +1,11 @@
 'use strict';
 
-FamousFramework.component('svitlana:remax-banner:footer', {
+FamousFramework.component('svitlana:remax-banner:footer-remax', {
     behaviors: {
         '#footerRemax': {
             'position-z': '20',
             'style': {
-                'background-color': 'green'
+                'background-color': 'red'
             },
             'content': '<div>Hello</div>'
         }

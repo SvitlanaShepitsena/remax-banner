@@ -321,6 +321,7 @@ FamousFramework.includes("svitlana:remax-banner:logo", "HEAD", [], function() {
         }, {
             behaviors: {
                 '#logo': {
+                    'position-z': '50',
                     'size': [
                         120,
                         120

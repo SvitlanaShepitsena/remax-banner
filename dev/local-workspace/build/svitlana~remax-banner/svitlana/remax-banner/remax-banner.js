@@ -1,6 +1,7 @@
-//    ? path to your project
 'use strict';
 
+var id;
+//    ? path to your project
 FamousFramework.component('svitlana:remax-banner', {
     behaviors: {
         '#root': {
@@ -40,11 +41,19 @@ FamousFramework.component('svitlana:remax-banner', {
         },
         '.gallery-item': {
 
+            'align': [0, 0],
+            'mount-point': [0, 0],
+            'origin': [0.5, 0.5],
+            'opacity': .7,
+            'size': [160, 160],
+            'style': {
+                background: 'yellow',
+                'cursor': 'pointer'
+            },
             '$repeat': function (srcs) {
                 return srcs;
             },
             'position-x': function ($index, windowHeight, windowWidth) {
-                console.log(windowWidth);
                 return $index * 130;
             },
             'position-y': function ($index, windowHeight) {
@@ -56,13 +65,16 @@ FamousFramework.component('svitlana:remax-banner', {
             'rotation': [Math.PI / 2, 0, 0],
             'src': function ($index, srcs) {
                 return srcs[$index];
+            },
+            'index': function ($index) {
+                return $index;
             }
         }
     },
     events: {
         '$lifecycle': {
             'post-load': function ($state, $famousNode) {
-                var id = $famousNode.addComponent({
+                id = $famousNode.addComponent({
                     onUpdate: function (time) {
                         for (var i = 0; i < $state.get('srcs').length; i++) {
                             var currentZ = $state.get(['positionZ', i]);
@@ -72,14 +84,18 @@ FamousFramework.component('svitlana:remax-banner', {
                             }
                             $state.set(['positionZ', i], currentZ - 1);
                         }
-                        $famousNode.requestUpdateOnNextTick(id);
+                        var animationStopped = $state.get('isAnimationStopped');
+                        console.log(animationStopped);
+                        if (!animationStopped) {
+                            $famousNode.requestUpdateOnNextTick(id);
+                        }
                     }
                 });
                 $famousNode.requestUpdateOnNextTick(id);
             }
         },
         '.gallery-item': {
-            'click': function ($state) {
+            'click': function ($state, $famousNode, $dispatcher, $repeatPayload, $index) {
                 $state.set('rotationValue', $state.get('rotationValue') - Math.PI / 2, {
                     duration: 1000,
                     curve: 'easeIn'
@@ -87,6 +103,16 @@ FamousFramework.component('svitlana:remax-banner', {
                     duration: 2000,
                     curve: 'easeOut'
                 });
+                var animationStopped = $state.get('isAnimationStopped');
+                if (animationStopped) {
+                    $state.set('isAnimationStopped', 0);
+                    $dispatcher.broadcast('house-info-hide', { id: $index });
+
+                    $famousNode.requestUpdateOnNextTick(id);
+                } else {
+                    $state.set('isAnimationStopped', 1);
+                    $dispatcher.broadcast('house-info-show', { id: $index });
+                }
 
                 $state.set('rootZ', -500, {
                     duration: 1000,
@@ -99,6 +125,9 @@ FamousFramework.component('svitlana:remax-banner', {
         }
     },
     states: {
+
+        isAnimationStopped: 0,
+
         windowHeight: windowHeight,
         windowWidth: windowWidth,
 

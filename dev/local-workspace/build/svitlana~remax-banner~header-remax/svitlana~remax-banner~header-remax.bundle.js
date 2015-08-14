@@ -1,6 +1,6 @@
 // Copyright 2015 (c) Famous Industries, Inc.
 "use strict";
-FamousFramework.includes("svitlana:remax-banner:logo", "HEAD", [], function() {
+FamousFramework.includes("svitlana:remax-banner:header-remax", "HEAD", [], function() {
     (function(){
         'use strict';
         FamousFramework.module('famous:core:node', 'HEAD', {
@@ -307,7 +307,7 @@ FamousFramework.includes("svitlana:remax-banner:logo", "HEAD", [], function() {
     }());
     (function(){
         'use strict';
-        FamousFramework.component('svitlana:remax-banner:logo', 'HEAD', {
+        FamousFramework.component('svitlana:remax-banner:header-remax', 'HEAD', {
             'dependencies': { 'famous:core:node': 'HEAD' },
             'famousNodeConstructorName': '',
             'extensions': [{
@@ -320,25 +320,33 @@ FamousFramework.includes("svitlana:remax-banner:logo", "HEAD", [], function() {
             }
         }, {
             behaviors: {
-                '#logo': {
-                    'position-z': '20',
-                    'position-x': '10',
-                    'position-y': '32',
+                '#headerRemax': {
                     'size': [
-                        100,
-                        100
+                        undefined,
+                        46
                     ],
-                    'style': {
-                        'width': '100px',
-                        'height': '100px'
-                    }
-                },
-                'img': { 'src': 'https://s3-us-west-2.amazonaws.com/svet.com/ad/remax1stclass/balloon-no-shade.png' }
+                    'align': [
+                        0.5,
+                        0
+                    ],
+                    'origin': [
+                        0.5,
+                        0
+                    ],
+                    'mount-point': [
+                        0.5,
+                        0
+                    ],
+                    'style': { 'background-color': 'red' },
+                    'position-x': '10',
+                    'position-y': '0',
+                    'position-z': '150'
+                }
             },
             events: {},
-            states: { imgSrc: null },
-            tree: '<famous:core:node id="logo">\n    <img>\n    </famous:core:node>'
+            states: {},
+            tree: '<famous:core:node id="headerRemax">\n    </famous:core:node>'
         });
     }());
-    FamousFramework.markComponentAsReady("svitlana:remax-banner:logo", "HEAD");
+    FamousFramework.markComponentAsReady("svitlana:remax-banner:header-remax", "HEAD");
 });

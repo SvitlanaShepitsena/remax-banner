@@ -1,6 +1,6 @@
 // Copyright 2015 (c) Famous Industries, Inc.
 "use strict";
-FamousFramework.includes("svitlana:remax-banner:logo", "HEAD", [], function() {
+FamousFramework.includes("svitlana:remax-banner:header-content", "HEAD", [], function() {
     (function(){
         'use strict';
         FamousFramework.module('famous:core:node', 'HEAD', {
@@ -307,7 +307,7 @@ FamousFramework.includes("svitlana:remax-banner:logo", "HEAD", [], function() {
     }());
     (function(){
         'use strict';
-        FamousFramework.component('svitlana:remax-banner:logo', 'HEAD', {
+        FamousFramework.component('svitlana:remax-banner:header-content', 'HEAD', {
             'dependencies': { 'famous:core:node': 'HEAD' },
             'famousNodeConstructorName': '',
             'extensions': [{
@@ -320,25 +320,27 @@ FamousFramework.includes("svitlana:remax-banner:logo", "HEAD", [], function() {
             }
         }, {
             behaviors: {
-                '#logo': {
-                    'position-z': '20',
-                    'position-x': '10',
-                    'position-y': '32',
+                '#headerContent': {
                     'size': [
-                        100,
-                        100
+                        undefined,
+                        16
                     ],
+                    'content': '<div>YOU NEED ONLY ONE COMPANY FOR ALL YOUR REAL ESTATE NEEDS!</div>',
+                    'position-z': '152',
+                    'position-y': '24',
                     'style': {
-                        'width': '100px',
-                        'height': '100px'
+                        'font-family': 'Lucida Sans, Verdana, sans-serif',
+                        'color': 'white',
+                        'text-align': 'center',
+                        'font-size': '14px',
+                        'text-shadow': 'rgba(0, 0, 0, 0.298039) 0px -1px 0px, rgba(255, 255, 255, 0.4) 0px 1px 0px'
                     }
-                },
-                'img': { 'src': 'https://s3-us-west-2.amazonaws.com/svet.com/ad/remax1stclass/balloon-no-shade.png' }
+                }
             },
             events: {},
-            states: { imgSrc: null },
-            tree: '<famous:core:node id="logo">\n    <img>\n    </famous:core:node>'
+            states: {},
+            tree: '<famous:core:node id="headerContent">\n    </famous:core:node>'
         });
     }());
-    FamousFramework.markComponentAsReady("svitlana:remax-banner:logo", "HEAD");
+    FamousFramework.markComponentAsReady("svitlana:remax-banner:header-content", "HEAD");
 });

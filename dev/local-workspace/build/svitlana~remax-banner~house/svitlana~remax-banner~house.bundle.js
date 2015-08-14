@@ -1,6 +1,6 @@
 // Copyright 2015 (c) Famous Industries, Inc.
 "use strict";
-FamousFramework.includes("svitlana:remax-banner:house", "HEAD", [], function() {
+FamousFramework.includes("svitlana:remax-banner:house", "HEAD", ["svitlana/remax-banner/house/info-panel/../../galleryData.js"], function() {
     (function(){
         'use strict';
         FamousFramework.module('famous:core:node', 'HEAD', {
@@ -328,6 +328,9 @@ FamousFramework.includes("svitlana:remax-banner:house", "HEAD", [], function() {
                         0,
                         0
                     ],
+                    'scale': function (scale) {
+                        return scale;
+                    },
                     'origin': [
                         0.5,
                         0.5
@@ -339,18 +342,59 @@ FamousFramework.includes("svitlana:remax-banner:house", "HEAD", [], function() {
                     'content': function (houseInfo) {
                         return houseInfo;
                     },
-                    'style': { 'background': 'green' }
+                    style: {
+                        'background-color': 'whitesmoke',
+                        'border-radius': '10px',
+                        'text-align': 'left'
+                    },
+                    'a': {
+                        'style': function (color, fontFamily) {
+                            return {
+                                'color': color,
+                                'font-family': fontFamily,
+                                'font-size': '30px',
+                                'text-align': 'center'
+                            };
+                        }
+                    }
                 }
             },
             events: {
                 '$public': {
-                    'house-info': function ($state, $payload) {
-                        $state.set('houseInfo', $payload);
+                    'index': function ($state, $payload) {
+                        $state.set('index', $payload);
                     }
                 },
                 '#house-info': {
-                    'house-click': function ($state) {
-                        console.log('click');
+                    'house-info-show': function ($state, $payload) {
+                        var index = $state.get('index');
+                        var idClicked = $payload.id;
+                        if (index !== idClicked) {
+                            return;
+                        }
+                        var houseInfo = '<table>\n             <tr>\n             <td>City:</td>\n             <td>' + housesData[index].city + '</td>\n             </tr>\n             <tr>\n             <td>Bedrooms:</td>\n             <td>' + housesData[index].beds + '</td>\n             </tr>\n             <tr>\n             <td>Price</td>\n             <td>' + housesData[index].price + '</td>\n             </tr>\n             <tr >\n             <td colspan="2">\n            <a href="' + housesData[index].url + '">More info</a>\n             <td></td>\n             </tr>\n             </table>';
+                        $state.set('houseInfo', houseInfo);
+                        $state.set('align', [
+                            0,
+                            1
+                        ], {
+                            duration: 2500,
+                            curve: 'easeOutBounce'
+                        });
+                        $state.set('scale', [
+                            1,
+                            1
+                        ], { duration: 2500 });
+                    },
+                    'house-info-hide': function ($state, $payload) {
+                        $state.set('align', [
+                            0,
+                            0
+                        ], { duration: 2500 });
+                        $state.set('scale', [
+                            0,
+                            0
+                        ], { duration: 2500 });
                     }
                 }
             },
@@ -359,10 +403,17 @@ FamousFramework.includes("svitlana:remax-banner:house", "HEAD", [], function() {
                     0,
                     0
                 ],
-                houseInfo: null
+                scale: [
+                    0,
+                    0
+                ],
+                houseInfo: '',
+                index: 0,
+                color: '#49afeb',
+                fontFamily: 'Lato, Helvetica, Arial, sans-serif'
             },
             tree: '<famous:core:node id="house-info">\n    </famous:core:node>'
-        });
+        }).config({ includes: ['../../galleryData.js'] });
     }());
     (function(){
         'use strict';
@@ -400,6 +451,27 @@ FamousFramework.includes("svitlana:remax-banner:house", "HEAD", [], function() {
                         160
                     ]
                 },
+                '#info-panel': {
+                    'align': [
+                        0.5,
+                        0.5
+                    ],
+                    'mount-point': [
+                        0.5,
+                        0.5
+                    ],
+                    'origin': [
+                        0.5,
+                        0.5
+                    ],
+                    'size': [
+                        160,
+                        160
+                    ],
+                    'index': function (index) {
+                        return index;
+                    }
+                },
                 'img': {
                     'align': [
                         0.5,
@@ -426,10 +498,16 @@ FamousFramework.includes("svitlana:remax-banner:house", "HEAD", [], function() {
                 '$public': {
                     'src': function ($state, $payload) {
                         $state.set('src', $payload);
+                    },
+                    'index': function ($state, $payload) {
+                        $state.set('index', $payload);
                     }
                 }
             },
-            states: { imgSrc: null },
+            states: {
+                src: '',
+                index: -1
+            },
             tree: '<famous:core:node id="house">\n    <img>\n    <svitlana:remax-banner:house:info-panel id="info-panel"></svitlana:remax-banner:house:info-panel>\n    </famous:core:node>'
         }).config({ imports: { 'svitlana:remax-banner:house': ['info-panel'] } });
     }());

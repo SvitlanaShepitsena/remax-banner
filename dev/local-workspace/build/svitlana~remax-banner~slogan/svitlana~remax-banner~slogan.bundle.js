@@ -1,6 +1,6 @@
 // Copyright 2015 (c) Famous Industries, Inc.
 "use strict";
-FamousFramework.includes("svitlana:remax-banner:logo", "HEAD", [], function() {
+FamousFramework.includes("svitlana:remax-banner:slogan", "HEAD", [], function() {
     (function(){
         'use strict';
         FamousFramework.module('famous:core:node', 'HEAD', {
@@ -307,7 +307,7 @@ FamousFramework.includes("svitlana:remax-banner:logo", "HEAD", [], function() {
     }());
     (function(){
         'use strict';
-        FamousFramework.component('svitlana:remax-banner:logo', 'HEAD', {
+        FamousFramework.component('svitlana:remax-banner:slogan', 'HEAD', {
             'dependencies': { 'famous:core:node': 'HEAD' },
             'famousNodeConstructorName': '',
             'extensions': [{
@@ -320,25 +320,39 @@ FamousFramework.includes("svitlana:remax-banner:logo", "HEAD", [], function() {
             }
         }, {
             behaviors: {
-                '#logo': {
-                    'position-z': '20',
-                    'position-x': '10',
-                    'position-y': '32',
-                    'size': [
-                        100,
-                        100
+                '#slogan': {
+                    'align': [
+                        0.95,
+                        0.89
                     ],
+                    'origin': [
+                        0.95,
+                        0.89
+                    ],
+                    'mount-point': [
+                        0.95,
+                        0.89
+                    ],
+                    'size': [
+                        160,
+                        16
+                    ],
+                    'content': '<div>Let us guide you!</div>',
+                    'position-y': '0',
+                    'position-z': '150',
                     'style': {
-                        'width': '100px',
-                        'height': '100px'
+                        'font-family': 'Lucida Sans, Verdana, sans-serif',
+                        'cursor': 'pointer',
+                        'color': 'white',
+                        'font-size': '14px',
+                        'text-shadow': 'rgba(0, 22, 43, 0.901961) 0px -1px 0px'
                     }
-                },
-                'img': { 'src': 'https://s3-us-west-2.amazonaws.com/svet.com/ad/remax1stclass/balloon-no-shade.png' }
+                }
             },
             events: {},
-            states: { imgSrc: null },
-            tree: '<famous:core:node id="logo">\n    <img>\n    </famous:core:node>'
+            states: {},
+            tree: '<famous:core:node id="slogan">\n    </famous:core:node>'
         });
     }());
-    FamousFramework.markComponentAsReady("svitlana:remax-banner:logo", "HEAD");
+    FamousFramework.markComponentAsReady("svitlana:remax-banner:slogan", "HEAD");
 });

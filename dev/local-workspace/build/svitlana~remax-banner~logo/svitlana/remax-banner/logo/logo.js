@@ -5,7 +5,7 @@ FamousFramework.component('svitlana:remax-banner:logo', {
         '#logo': {
             'position-z': '20',
             'position-x': '10',
-            'position-y': '30',
+            'position-y': '32',
             'size': [100, 100],
             'style': {
                 'width': '100px',

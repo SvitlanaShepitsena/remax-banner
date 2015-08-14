@@ -16,17 +16,21 @@ var imageData = ['https://s3-us-west-2.amazonaws.com/svet.com/ad/remax1stclass/a
 var housesData = [{
     city: 'Shamburg',
     beds: 3,
-    price: 1000
+    price: 1000,
+    url: 'http://www.remax1stclass.com/Homes-Sale-Winnetka/5'
 }, {
     city: 'Hoffman',
     beds: 5,
-    price: 2000
+    price: 2000,
+    url: 'http://www.remax1stclass.com/Homes-Sale-Winnetka/5'
 }, {
     city: 'Chicago',
     beds: 1,
-    price: 500
+    price: 500,
+    url: 'http://www.remax1stclass.com/Homes-Sale-Winnetka/5'
 }, {
     city: 'Skokie',
     beds: 7,
-    price: 10000
+    price: 10000,
+    url: 'http://www.remax1stclass.com/Homes-Sale-Winnetka/5'
 }];

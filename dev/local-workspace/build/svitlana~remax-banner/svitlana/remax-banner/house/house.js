@@ -6,8 +6,7 @@ FamousFramework.component('svitlana:remax-banner:house', {
             'align': [0.5, 0.5],
             'mount-point': [0.5, 0.5],
             'origin': [0.5, 0.5],
-            'size': [160, 160],
-            'position-y': '100'
+            'size': [160, 160]
         },
         '#info-panel': {
             'align': [0.5, 0.5],

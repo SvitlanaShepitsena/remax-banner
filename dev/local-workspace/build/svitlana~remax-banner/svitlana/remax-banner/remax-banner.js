@@ -20,21 +20,15 @@ FamousFramework.component('svitlana:remax-banner', {
                 return [windowWidth * .85, windowHeight];
             },
             'rotation': function (rotationValue) {
-                return [-Math.PI / 2.1, 0, rotationValue];
+                return [-Math.PI / 2, 0, rotationValue];
             },
             'style': {
                 'backgroundColor': 'red'
             }
         },
         '.gallery-item': {
-
-            'align': [0, 0],
-            'mount-point': [0, 0],
-            'origin': [0.5, 0.5],
-            'opacity': .7,
             'size': [160, 160],
             'style': {
-                background: 'yellow',
                 'cursor': 'pointer'
             },
             '$repeat': function (srcs) {
@@ -72,7 +66,6 @@ FamousFramework.component('svitlana:remax-banner', {
                             $state.set(['positionZ', i], currentZ - 1);
                         }
                         var animationStopped = $state.get('isAnimationStopped');
-                        console.log(animationStopped);
                         if (!animationStopped) {
                             $famousNode.requestUpdateOnNextTick(id);
                         }

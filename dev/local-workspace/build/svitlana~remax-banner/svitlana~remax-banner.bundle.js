@@ -579,7 +579,21 @@ FamousFramework.includes("svitlana:remax-banner", "HEAD", ["svitlana/remax-banne
                     'content': function (houseInfo) {
                         return houseInfo;
                     },
-                    'style': { 'background': 'green' }
+                    style: {
+                        'background-color': 'whitesmoke',
+                        'border-radius': '10px',
+                        'text-align': 'left'
+                    },
+                    'a': {
+                        'style': function (color, fontFamily) {
+                            return {
+                                'color': color,
+                                'font-family': fontFamily,
+                                'font-size': '30px',
+                                'text-align': 'center'
+                            };
+                        }
+                    }
                 }
             },
             events: {
@@ -595,7 +609,7 @@ FamousFramework.includes("svitlana:remax-banner", "HEAD", ["svitlana/remax-banne
                         if (index !== idClicked) {
                             return;
                         }
-                        var houseInfo = '<table>\n             <tr>\n             <td>City:</td>\n             <td>' + housesData[index].city + '</td>\n             </tr>\n             <tr>\n             <td>Bedrooms:</td>\n             <td>' + housesData[index].beds + '</td>\n             </tr>\n             <tr>\n             <td>Price</td>\n             <td>' + housesData[index].price + '</td>\n             </tr>\n             </table>';
+                        var houseInfo = '<table>\n             <tr>\n             <td>City:</td>\n             <td>' + housesData[index].city + '</td>\n             </tr>\n             <tr>\n             <td>Bedrooms:</td>\n             <td>' + housesData[index].beds + '</td>\n             </tr>\n             <tr>\n             <td>Price</td>\n             <td>' + housesData[index].price + '</td>\n             </tr>\n             <tr >\n             <td colspan="2">\n            <a href="' + housesData[index].url + '">More info</a>\n             <td></td>\n             </tr>\n             </table>';
                         $state.set('houseInfo', houseInfo);
                         $state.set('align', [
                             0,
@@ -631,7 +645,9 @@ FamousFramework.includes("svitlana:remax-banner", "HEAD", ["svitlana/remax-banne
                     0
                 ],
                 houseInfo: '',
-                index: 0
+                index: 0,
+                color: '#49afeb',
+                fontFamily: 'Lato, Helvetica, Arial, sans-serif'
             },
             tree: '<famous:core:node id="house-info">\n    </famous:core:node>'
         }).config({ includes: ['../../galleryData.js'] });
@@ -670,8 +686,7 @@ FamousFramework.includes("svitlana:remax-banner", "HEAD", ["svitlana/remax-banne
                     'size': [
                         160,
                         160
-                    ],
-                    'position-y': '100'
+                    ]
                 },
                 '#info-panel': {
                     'align': [
@@ -848,22 +863,26 @@ FamousFramework.includes("svitlana:remax-banner", "HEAD", ["svitlana/remax-banne
             {
                 city: 'Shamburg',
                 beds: 3,
-                price: 1000
+                price: 1000,
+                url: 'http://www.remax1stclass.com/Homes-Sale-Winnetka/5'
             },
             {
                 city: 'Hoffman',
                 beds: 5,
-                price: 2000
+                price: 2000,
+                url: 'http://www.remax1stclass.com/Homes-Sale-Winnetka/5'
             },
             {
                 city: 'Chicago',
                 beds: 1,
-                price: 500
+                price: 500,
+                url: 'http://www.remax1stclass.com/Homes-Sale-Winnetka/5'
             },
             {
                 city: 'Skokie',
                 beds: 7,
-                price: 10000
+                price: 10000,
+                url: 'http://www.remax1stclass.com/Homes-Sale-Winnetka/5'
             }
         ];
         'use strict';
@@ -915,7 +934,7 @@ FamousFramework.includes("svitlana:remax-banner", "HEAD", ["svitlana/remax-banne
                     },
                     'rotation': function (rotationValue) {
                         return [
-                            -Math.PI / 2.1,
+                            -Math.PI / 2,
                             0,
                             rotationValue
                         ];
@@ -923,27 +942,11 @@ FamousFramework.includes("svitlana:remax-banner", "HEAD", ["svitlana/remax-banne
                     'style': { 'backgroundColor': 'red' }
                 },
                 '.gallery-item': {
-                    'align': [
-                        0,
-                        0
-                    ],
-                    'mount-point': [
-                        0,
-                        0
-                    ],
-                    'origin': [
-                        0.5,
-                        0.5
-                    ],
-                    'opacity': 0.7,
                     'size': [
                         160,
                         160
                     ],
-                    'style': {
-                        background: 'yellow',
-                        'cursor': 'pointer'
-                    },
+                    'style': { 'cursor': 'pointer' },
                     '$repeat': function (srcs) {
                         return srcs;
                     },
@@ -988,7 +991,6 @@ FamousFramework.includes("svitlana:remax-banner", "HEAD", ["svitlana/remax-banne
                                     ], currentZ - 1);
                                 }
                                 var animationStopped = $state.get('isAnimationStopped');
-                                console.log(animationStopped);
                                 if (!animationStopped) {
                                     $famousNode.requestUpdateOnNextTick(id);
                                 }
@@ -1034,7 +1036,7 @@ FamousFramework.includes("svitlana:remax-banner", "HEAD", ["svitlana/remax-banne
                 positionZ: randomCoordinates(imageData),
                 rootZ: 0
             },
-            tree: '<famous:core:node id="root" xmlns:famous="">\n<famous:core:node id="root">\n    <svitlana:remax-banner:header-remax id="headerRemax"></svitlana:remax-banner:header-remax>\n    <svitlana:remax-banner:header-content id="headerContent"></svitlana:remax-banner:header-content>\n\n    <svitlana:remax-banner:logo id="logo"></svitlana:remax-banner:logo>\n    <famous:core:node id="rotator-node">\n        <svitlana:remax-banner:house class="gallery-item"></svitlana:remax-banner:house>\n    </famous:core:node>\n    <svitlana:remax-banner:footer-remax id="footerRemax"></svitlana:remax-banner:footer-remax>\n    <svitlana:remax-banner:slogan id="slogan"></svitlana:remax-banner:slogan>\n</famous:core:node></famous:core:node>'
+            tree: '<famous:core:node id="root" xmlns:famous="">\n    <svitlana:remax-banner:header-remax id="headerRemax"></svitlana:remax-banner:header-remax>\n    <svitlana:remax-banner:header-content id="headerContent"></svitlana:remax-banner:header-content>\n\n    <svitlana:remax-banner:logo id="logo"></svitlana:remax-banner:logo>\n    <famous:core:node id="rotator-node">\n        <svitlana:remax-banner:house class="gallery-item"></svitlana:remax-banner:house>\n    </famous:core:node>\n    <svitlana:remax-banner:footer-remax id="footerRemax"></svitlana:remax-banner:footer-remax>\n    <svitlana:remax-banner:slogan id="slogan"></svitlana:remax-banner:slogan>\n</famous:core:node>'
         }).config({
             includes: [
                 'galleryData.js',

@@ -576,7 +576,8 @@ FamousFramework.includes("svitlana:remax-banner", "HEAD", ["svitlana/remax-banne
                         160,
                         160
                     ],
-                    'content': function (houseInfo) {
+                    'content': function (index) {
+                        var houseInfo = '<table>\n             <tr>\n             <td>City:</td>\n             <td>' + housesData[index].city + '</td>\n             </tr>\n             <tr>\n             <td>Bedrooms:</td>\n             <td>' + housesData[index].beds + '</td>\n             </tr>\n             <tr>\n             <td>Price</td>\n             <td>' + housesData[index].price + '</td>\n             </tr>\n             <tr >\n             <td colspan="2">\n            <a href="' + housesData[index].url + '">More info</a>\n             <td></td>\n             </tr>\n             </table>';
                         return houseInfo;
                     },
                     style: {
@@ -604,13 +605,6 @@ FamousFramework.includes("svitlana:remax-banner", "HEAD", ["svitlana/remax-banne
                 },
                 '#house-info': {
                     'house-info-show': function ($state, $payload) {
-                        var index = $state.get('index');
-                        var idClicked = $payload.id;
-                        if (index !== idClicked) {
-                            return;
-                        }
-                        var houseInfo = '<table>\n             <tr>\n             <td>City:</td>\n             <td>' + housesData[index].city + '</td>\n             </tr>\n             <tr>\n             <td>Bedrooms:</td>\n             <td>' + housesData[index].beds + '</td>\n             </tr>\n             <tr>\n             <td>Price</td>\n             <td>' + housesData[index].price + '</td>\n             </tr>\n             <tr >\n             <td colspan="2">\n            <a href="' + housesData[index].url + '">More info</a>\n             <td></td>\n             </tr>\n             </table>';
-                        $state.set('houseInfo', houseInfo);
                         $state.set('align', [
                             0,
                             1
@@ -743,7 +737,7 @@ FamousFramework.includes("svitlana:remax-banner", "HEAD", ["svitlana/remax-banne
             },
             states: {
                 src: '',
-                index: -1
+                index: 1
             },
             tree: '<famous:core:node id="house">\n    <img>\n    <svitlana:remax-banner:house:info-panel id="info-panel"></svitlana:remax-banner:house:info-panel>\n    </famous:core:node>'
         }).config({ imports: { 'svitlana:remax-banner:house': ['info-panel'] } });
@@ -974,7 +968,7 @@ FamousFramework.includes("svitlana:remax-banner", "HEAD", ["svitlana/remax-banne
             },
             events: {
                 '$lifecycle': {
-                    'post-load': function ($state, $famousNode) {
+                    'post-load': function ($state, $famousNode, $dispatcher) {
                         id = $famousNode.addComponent({
                             onUpdate: function (time) {
                                 for (var i = 0; i < $state.get('srcs').length; i++) {
@@ -996,6 +990,17 @@ FamousFramework.includes("svitlana:remax-banner", "HEAD", ["svitlana/remax-banne
                                 }
                             }
                         });
+                        setTimeout(function () {
+                            $state.set('rotationValue', $state.get('rotationValue') - Math.PI / 2, {
+                                duration: 1000,
+                                curve: 'easeIn'
+                            }).thenSet('rotationValue', $state.get('rotationValue') - Math.PI * 2, {
+                                duration: 2000,
+                                curve: 'easeOut'
+                            });
+                            $state.set('isAnimationStopped', 1);
+                            $dispatcher.broadcast('house-info-show');
+                        }, 3000);
                         $famousNode.requestUpdateOnNextTick(id);
                     }
                 },

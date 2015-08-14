@@ -35,7 +35,7 @@ FamousFramework.component('svitlana:remax-banner:house', {
     },
     states: {
         src: '',
-        index: -1
+        index: 1
     },
     tree: '<node id="house">\n    <img>\n    <info-panel id="info-panel"></info-panel>\n    </node>'
 }).config({

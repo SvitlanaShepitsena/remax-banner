@@ -54,7 +54,7 @@ FamousFramework.component('svitlana:remax-banner', {
     },
     events: {
         '$lifecycle': {
-            'post-load': function ($state, $famousNode) {
+            'post-load': function ($state, $famousNode, $dispatcher) {
                 id = $famousNode.addComponent({
                     onUpdate: function (time) {
                         for (var i = 0; i < $state.get('srcs').length; i++) {
@@ -71,6 +71,19 @@ FamousFramework.component('svitlana:remax-banner', {
                         }
                     }
                 });
+
+                setTimeout(function () {
+                    $state.set('rotationValue', $state.get('rotationValue') - Math.PI / 2, {
+                        duration: 1000,
+                        curve: 'easeIn'
+                    }).thenSet('rotationValue', $state.get('rotationValue') - Math.PI * 2, {
+                        duration: 2000,
+                        curve: 'easeOut'
+                    });
+                    $state.set('isAnimationStopped', 1);
+                    $dispatcher.broadcast('house-info-show');
+                }, 3000);
+
                 $famousNode.requestUpdateOnNextTick(id);
             }
         },

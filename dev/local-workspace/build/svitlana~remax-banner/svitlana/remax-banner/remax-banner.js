@@ -8,29 +8,16 @@ FamousFramework.component('svitlana:remax-banner', {
                 'perspective': '1000px'
             }
         },
-        '#logo': {
-            'align': [0.1, 0.1],
-            'mount-point': [0.1, 0.1],
-            'origin': [0.1, 0.1]
-        },
-
-        '#footerRemax': {
-            'align': [0.5, 1],
-            'origin': [0.5, 1],
-            'mount-point': [0.5, 1],
-            'size': [undefined, 100]
-
-        },
         '#rotator-node': {
-            'position-z': function (rootZ) {
-                return rootZ;
-            },
-            'size': function (windowHeight) {
-                return [windowHeight, windowHeight];
-            },
             'align': [0.12, 0.12],
             'mount-point': [0, 0],
             'origin': [0.5, 0.5],
+            'position-z': function (rootZ) {
+                return rootZ;
+            },
+            'size': function (windowWidth, windowHeight) {
+                return [windowWidth * .85, windowHeight];
+            },
             'rotation': function (rotationValue) {
                 return [-Math.PI / 2.1, 0, rotationValue];
             },
@@ -111,6 +98,6 @@ FamousFramework.component('svitlana:remax-banner', {
 }).config({
     includes: ['galleryData.js', 'remax-banner.css'],
     imports: {
-        'svitlana:remax-banner': ['house', 'logo', 'footer-remax']
+        'svitlana:remax-banner': ['header-remax', 'header-content', 'house', 'logo', 'footer-remax', 'slogan']
     }
 });

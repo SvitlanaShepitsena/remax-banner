@@ -321,10 +321,17 @@ FamousFramework.includes("svitlana:remax-banner:logo", "HEAD", [], function() {
         }, {
             behaviors: {
                 '#logo': {
+                    'position-z': '20',
+                    'position-x': '10',
+                    'position-y': '30',
                     'size': [
-                        120,
-                        120
-                    ]
+                        100,
+                        100
+                    ],
+                    'style': {
+                        'width': '100px',
+                        'height': '100px'
+                    }
                 },
                 'img': { 'src': 'https://s3-us-west-2.amazonaws.com/svet.com/ad/remax1stclass/balloon-no-shade.png' }
             },

@@ -8,7 +8,7 @@ function randomCoordinates(imageData) {
     var result = [];
     for (var i = 0; i < imageData.length; i++) {
         //start outside of the viewing window and random disperse below
-        result.push(Math.floor(windowHeight / 2 + Math.random() * windowHeight * 2));
+        result.push(Math.floor(windowHeight / 2 + Math.random() * windowHeight * 2) - 500);
     }
     return result;
 }

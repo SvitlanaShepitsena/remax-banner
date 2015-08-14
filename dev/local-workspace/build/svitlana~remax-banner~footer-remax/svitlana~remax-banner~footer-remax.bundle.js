@@ -307,7 +307,7 @@ FamousFramework.includes("svitlana:remax-banner:footer-remax", "HEAD", [], funct
     }());
     (function(){
         'use strict';
-        FamousFramework.component('svitlana:remax-banner:footer-remax:slogan', 'HEAD', {
+        FamousFramework.component('svitlana:remax-banner:footer-remax', 'HEAD', {
             'dependencies': { 'famous:core:node': 'HEAD' },
             'famousNodeConstructorName': '',
             'extensions': [{
@@ -320,62 +320,37 @@ FamousFramework.includes("svitlana:remax-banner:footer-remax", "HEAD", [], funct
             }
         }, {
             behaviors: {
-                '#slogan': {
+                '#footerRemax': {
                     'size': [
-                        700,
-                        30
+                        730,
+                        50
                     ],
-                    'content': '<h2>You need only one company for all your real estate needs!</h2>',
-                    'style': {
-                        'color': 'black',
-                        'font-size': '15px'
-                    }
-                }
-            },
-            events: {},
-            states: {},
-            tree: '<famous:core:node id="slogan">\n    </famous:core:node>'
-        });
-    }());
-    (function(){
-        'use strict';
-        FamousFramework.component('svitlana:remax-banner:footer-remax', 'HEAD', {
-            'dependencies': {
-                'famous:core:node': 'HEAD',
-                'svitlana:remax-banner:footer-remax:slogan': 'HEAD'
-            },
-            'famousNodeConstructorName': '',
-            'extensions': [{
-                    'name': 'famous:core:node',
-                    'version': 'HEAD'
-                }],
-            'expose': {
-                'type': 'ObjectExpression',
-                'properties': []
-            }
-        }, {
-            behaviors: {
-                '#footerRemax': { 'style': { 'background-color': 'red' } },
-                '#slogan': {
                     'align': [
-                        0.5,
-                        0.5
+                        0,
+                        1
                     ],
                     'origin': [
-                        0.5,
-                        0.5
+                        0,
+                        1
                     ],
                     'mount-point': [
-                        0.5,
-                        0.5
+                        0,
+                        1
                     ],
-                    'position-z': '5'
+                    'style': {
+                        'background-color': 'rgb(0, 93, 153)',
+                        'box-shadow': 'rgba(13, 16, 81, 0.639216) 0px 0px 10px 0px inset',
+                        'background-image': '-webkit-radial-gradient(50% -375px, circle cover, rgb(0, 161, 228) 0px, rgb(0, 93, 153) 750px'
+                    },
+                    'position-x': '10',
+                    'position-y': '0',
+                    'position-z': '150'
                 }
             },
             events: {},
             states: {},
-            tree: '<famous:core:node id="footerRemax">\n        <svitlana:remax-banner:footer-remax:slogan id="slogan"></svitlana:remax-banner:footer-remax:slogan>\n    </famous:core:node>'
-        }).config({ imports: { 'svitlana:remax-banner:footer-remax': ['slogan'] } });
+            tree: '<famous:core:node id="footerRemax"> </famous:core:node>'
+        });
     }());
     FamousFramework.markComponentAsReady("svitlana:remax-banner:footer-remax", "HEAD");
 });

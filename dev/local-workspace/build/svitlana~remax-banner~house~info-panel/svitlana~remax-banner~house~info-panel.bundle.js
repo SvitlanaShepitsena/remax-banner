@@ -339,7 +339,8 @@ FamousFramework.includes("svitlana:remax-banner:house:info-panel", "HEAD", ["svi
                         160,
                         160
                     ],
-                    'content': function (houseInfo) {
+                    'content': function (index) {
+                        var houseInfo = '<table>\n             <tr>\n             <td>City:</td>\n             <td>' + housesData[index].city + '</td>\n             </tr>\n             <tr>\n             <td>Bedrooms:</td>\n             <td>' + housesData[index].beds + '</td>\n             </tr>\n             <tr>\n             <td>Price</td>\n             <td>' + housesData[index].price + '</td>\n             </tr>\n             <tr >\n             <td colspan="2">\n            <a href="' + housesData[index].url + '">More info</a>\n             <td></td>\n             </tr>\n             </table>';
                         return houseInfo;
                     },
                     style: {
@@ -367,13 +368,6 @@ FamousFramework.includes("svitlana:remax-banner:house:info-panel", "HEAD", ["svi
                 },
                 '#house-info': {
                     'house-info-show': function ($state, $payload) {
-                        var index = $state.get('index');
-                        var idClicked = $payload.id;
-                        if (index !== idClicked) {
-                            return;
-                        }
-                        var houseInfo = '<table>\n             <tr>\n             <td>City:</td>\n             <td>' + housesData[index].city + '</td>\n             </tr>\n             <tr>\n             <td>Bedrooms:</td>\n             <td>' + housesData[index].beds + '</td>\n             </tr>\n             <tr>\n             <td>Price</td>\n             <td>' + housesData[index].price + '</td>\n             </tr>\n             <tr >\n             <td colspan="2">\n            <a href="' + housesData[index].url + '">More info</a>\n             <td></td>\n             </tr>\n             </table>';
-                        $state.set('houseInfo', houseInfo);
                         $state.set('align', [
                             0,
                             1

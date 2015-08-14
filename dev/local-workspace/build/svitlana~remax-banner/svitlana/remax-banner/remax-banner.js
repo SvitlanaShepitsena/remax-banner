@@ -14,6 +14,17 @@ FamousFramework.component('svitlana:remax-banner', {
             'origin': [0.1, 0.1]
         },
 
+        '#footerRemax': {
+            'align': [0.5, 1],
+            'origin': [0.5, 1],
+            'mount-point': [0.5, 1]
+        },
+        '#slogan': {
+            'align': [0.5, 1],
+            'origin': [0.5, 1],
+            'mount-point': [0.5, 1]
+        },
+
         '#rotator-node': {
             'position-z': function (rootZ) {
                 return rootZ;
@@ -25,7 +36,10 @@ FamousFramework.component('svitlana:remax-banner', {
             'mount-point': [0, 0],
             'origin': [0.5, 0.5],
             'rotation': function (rotationValue) {
-                return [-Math.PI / 2, 0, rotationValue];
+                return [-Math.PI / 2.1, 0, rotationValue];
+            },
+            'style': {
+                'backgroundColor': 'red'
             }
         },
         '.gallery-item': {
@@ -34,7 +48,8 @@ FamousFramework.component('svitlana:remax-banner', {
                 return srcs;
             },
             'position-x': function ($index, windowHeight, windowWidth) {
-                return Math.random() * windowWidth;
+                console.log(windowWidth);
+                return $index * 130;
             },
             'position-y': function ($index, windowHeight) {
                 return Math.random() * windowHeight;
@@ -56,7 +71,7 @@ FamousFramework.component('svitlana:remax-banner', {
                         for (var i = 0; i < $state.get('srcs').length; i++) {
                             var currentZ = $state.get(['positionZ', i]);
                             // if image is out of screen move it back to bottom
-                            if (currentZ < -$state.get('windowHeight')) {
+                            if (currentZ < -1.2 * $state.get('windowHeight')) {
                                 currentZ = $state.get('windowHeight') / 1.5 + 100;
                             }
                             $state.set(['positionZ', i], currentZ - 1);
@@ -100,6 +115,6 @@ FamousFramework.component('svitlana:remax-banner', {
 }).config({
     includes: ['galleryData.js', 'remax-banner.css'],
     imports: {
-        'svitlana:remax-banner': ['house', 'logo']
+        'svitlana:remax-banner': ['house', 'logo', 'footer', 'slogan']
     }
 });

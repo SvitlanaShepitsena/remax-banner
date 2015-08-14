@@ -3,7 +3,7 @@
 FamousFramework.component('svitlana:remax-banner:logo', {
     behaviors: {
         '#logo': {
-
+            'position-z': '50',
             'size': [120, 120]
         },
         'img': {

@@ -443,6 +443,7 @@ FamousFramework.includes("svitlana:remax-banner", "HEAD", ["svitlana/remax-banne
         }, {
             behaviors: {
                 '#logo': {
+                    'position-z': '50',
                     'size': [
                         120,
                         120

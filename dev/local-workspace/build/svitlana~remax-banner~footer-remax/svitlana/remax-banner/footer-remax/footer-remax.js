@@ -8,11 +8,10 @@ FamousFramework.component('svitlana:remax-banner:footer-remax', {
             }
         },
         '#slogan': {
-            'align': [0.5, 1],
-            'origin': [0.5, 1],
-            'mount-point': [0.5, 1],
+            'align': [0.5, 0.5],
+            'origin': [0.5, 0.5],
+            'mount-point': [0.5, 0.5],
             'position-z': '5'
-
         }
     },
     events: {},

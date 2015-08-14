@@ -1,6 +1,6 @@
 // Copyright 2015 (c) Famous Industries, Inc.
 "use strict";
-FamousFramework.includes("svitlana:remax-banner:footer", "HEAD", [], function() {
+FamousFramework.includes("svitlana:remax-banner:footer-remax:slogan", "HEAD", [], function() {
     (function(){
         'use strict';
         FamousFramework.module('famous:core:node', 'HEAD', {
@@ -307,7 +307,7 @@ FamousFramework.includes("svitlana:remax-banner:footer", "HEAD", [], function() 
     }());
     (function(){
         'use strict';
-        FamousFramework.component('svitlana:remax-banner:footer', 'HEAD', {
+        FamousFramework.component('svitlana:remax-banner:slogan', 'HEAD', {
             'dependencies': { 'famous:core:node': 'HEAD' },
             'famousNodeConstructorName': '',
             'extensions': [{
@@ -320,7 +320,7 @@ FamousFramework.includes("svitlana:remax-banner:footer", "HEAD", [], function() 
             }
         }, {
             behaviors: {
-                '#footerRemax': {
+                '#slogan': {
                     'align': [
                         0,
                         1
@@ -335,15 +335,19 @@ FamousFramework.includes("svitlana:remax-banner:footer", "HEAD", [], function() 
                     ],
                     'size': [
                         700,
-                        100
+                        50
                     ],
-                    'style': { 'background-color': 'green' }
+                    'content': '<h2>You need only one company for all your real estate needs!</h2>',
+                    'style': {
+                        'color': 'black',
+                        'font-size': '15px'
+                    }
                 }
             },
             events: {},
             states: {},
-            tree: '<famous:core:node id="footerRemax">\n    </famous:core:node>'
+            tree: '<famous:core:node id="slogan">\n    </famous:core:node>'
         });
     }());
-    FamousFramework.markComponentAsReady("svitlana:remax-banner:footer", "HEAD");
+    FamousFramework.markComponentAsReady("svitlana:remax-banner:footer-remax:slogan", "HEAD");
 });

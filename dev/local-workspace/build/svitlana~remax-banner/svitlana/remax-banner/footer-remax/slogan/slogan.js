@@ -1,4 +1,6 @@
-FamousFramework.component('svitlana:remax-banner:slogan', {
+'use strict';
+
+FamousFramework.component('svitlana:remax-banner:footer-remax:slogan', {
     behaviors: {
         '#slogan': {
             'align': [0, 1],
@@ -8,12 +10,11 @@ FamousFramework.component('svitlana:remax-banner:slogan', {
             'content': '<h2>You need only one company for all your real estate needs!</h2>',
             'style': {
                 'color': 'black',
-                'font-size': '15px',
-            },
+                'font-size': '15px'
+            }
         }
     },
     events: {},
     states: {},
-    tree: `<node id="slogan">
-    </node>`
+    tree: '<node id="slogan">\n    </node>'
 });

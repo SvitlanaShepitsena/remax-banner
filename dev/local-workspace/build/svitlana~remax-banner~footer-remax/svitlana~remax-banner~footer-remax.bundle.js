@@ -1,6 +1,6 @@
 // Copyright 2015 (c) Famous Industries, Inc.
 "use strict";
-FamousFramework.includes("svitlana:remax-banner:slogan", "HEAD", [], function() {
+FamousFramework.includes("svitlana:remax-banner:footer-remax", "HEAD", [], function() {
     (function(){
         'use strict';
         FamousFramework.module('famous:core:node', 'HEAD', {
@@ -349,5 +349,45 @@ FamousFramework.includes("svitlana:remax-banner:slogan", "HEAD", [], function() 
             tree: '<famous:core:node id="slogan">\n    </famous:core:node>'
         });
     }());
-    FamousFramework.markComponentAsReady("svitlana:remax-banner:slogan", "HEAD");
+    (function(){
+        'use strict';
+        FamousFramework.component('svitlana:remax-banner:footer-remax', 'HEAD', {
+            'dependencies': {
+                'famous:core:node': 'HEAD',
+                'svitlana:remax-banner:footer-remax:slogan': 'HEAD'
+            },
+            'famousNodeConstructorName': '',
+            'extensions': [{
+                    'name': 'famous:core:node',
+                    'version': 'HEAD'
+                }],
+            'expose': {
+                'type': 'ObjectExpression',
+                'properties': []
+            }
+        }, {
+            behaviors: {
+                '#footerRemax': { 'style': { 'background-color': 'red' } },
+                '#slogan': {
+                    'align': [
+                        0.5,
+                        1
+                    ],
+                    'origin': [
+                        0.5,
+                        1
+                    ],
+                    'mount-point': [
+                        0.5,
+                        1
+                    ],
+                    'position-z': '5'
+                }
+            },
+            events: {},
+            states: {},
+            tree: '<famous:core:node id="footerRemax">\n        <svitlana:remax-banner:footer-remax:slogan id="slogan"></svitlana:remax-banner:footer-remax:slogan>\n    </famous:core:node>'
+        }).config({ imports: { 'svitlana:remax-banner:footer-remax': ['slogan'] } });
+    }());
+    FamousFramework.markComponentAsReady("svitlana:remax-banner:footer-remax", "HEAD");
 });

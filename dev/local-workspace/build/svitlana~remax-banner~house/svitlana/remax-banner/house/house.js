@@ -5,7 +5,8 @@ FamousFramework.component('svitlana:remax-banner:house', {
         '#house': {
             'align': [0.5, 0.5],
             'mount-point': [0.5, 0.5],
-            'origin': [0.5, 0.5]
+            'origin': [0.5, 0.5],
+            'size': [160, 160]
         },
         'img': {
             'align': [0.5, 0.5],
@@ -27,5 +28,9 @@ FamousFramework.component('svitlana:remax-banner:house', {
     states: {
         imgSrc: null
     },
-    tree: '<node id="house">\n    <img>\n    </node>'
+    tree: '<node id="house">\n    <img>\n    <info-panel id="info-panel"></info-panel>\n    </node>'
+}).config({
+    imports: {
+        'svitlana:remax-banner:house': ['info-panel']
+    }
 });

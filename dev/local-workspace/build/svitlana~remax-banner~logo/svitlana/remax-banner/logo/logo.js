@@ -18,10 +18,8 @@ FamousFramework.component('svitlana:remax-banner:logo', {
 
     },
     events: {},
-
     states: {
         imgSrc: null
     },
-
     tree: '<node id="logo">\n    <img>\n    </node>'
 });

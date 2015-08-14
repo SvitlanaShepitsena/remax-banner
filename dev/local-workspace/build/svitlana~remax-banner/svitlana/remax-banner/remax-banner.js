@@ -21,9 +21,6 @@ FamousFramework.component('svitlana:remax-banner', {
             },
             'rotation': function (rotationValue) {
                 return [-Math.PI / 2, 0, rotationValue];
-            },
-            'style': {
-                'backgroundColor': 'red'
             }
         },
         '.gallery-item': {
@@ -118,12 +115,9 @@ FamousFramework.component('svitlana:remax-banner', {
         }
     },
     states: {
-
         isAnimationStopped: 0,
-
         windowHeight: windowHeight,
         windowWidth: windowWidth,
-
         rotationValue: 0,
         srcs: imageData,
         positionZ: randomCoordinates(imageData),

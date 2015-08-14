@@ -1,3 +1,5 @@
+'use strict';
+
 FamousFramework.component('svitlana:remax-banner:slogan', {
     behaviors: {
         '#slogan': {
@@ -14,13 +16,12 @@ FamousFramework.component('svitlana:remax-banner:slogan', {
                 'color': 'white',
                 //'text-align': 'right',
                 'font-size': '14px',
-                'text-shadow': 'rgba(0, 22, 43, 0.901961) 0px -1px 0px',
-                //'text-shadow': 'rgba(0, 0, 0, 0.298039) 0px -1px 0px, rgba(255, 255, 255, 0.4) 0px 1px 0px',
-            },
+                'text-shadow': 'rgba(0, 22, 43, 0.901961) 0px -1px 0px'
+            }
         }
     },
+    //'text-shadow': 'rgba(0, 0, 0, 0.298039) 0px -1px 0px, rgba(255, 255, 255, 0.4) 0px 1px 0px',
     events: {},
     states: {},
-    tree: `<node id="slogan">
-    </node>`
+    tree: '<node id="slogan">\n    </node>'
 });

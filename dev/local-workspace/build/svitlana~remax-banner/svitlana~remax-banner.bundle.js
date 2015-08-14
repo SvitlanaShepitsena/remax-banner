@@ -826,6 +826,7 @@ FamousFramework.includes("svitlana:remax-banner", "HEAD", ["svitlana/remax-banne
                     'position-z': '150',
                     'style': {
                         'font-family': 'Lucida Sans, Verdana, sans-serif',
+                        'cursor': 'pointer',
                         'color': 'white',
                         'font-size': '14px',
                         'text-shadow': 'rgba(0, 22, 43, 0.901961) 0px -1px 0px'
@@ -932,8 +933,7 @@ FamousFramework.includes("svitlana:remax-banner", "HEAD", ["svitlana/remax-banne
                             0,
                             rotationValue
                         ];
-                    },
-                    'style': { 'backgroundColor': 'red' }
+                    }
                 },
                 '.gallery-item': {
                     'size': [

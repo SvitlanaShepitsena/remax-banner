@@ -1,6 +1,6 @@
 // Copyright 2015 (c) Famous Industries, Inc.
 "use strict";
-FamousFramework.includes("svitlana:remax-banner:house", "HEAD", ["svitlana/remax-banner/house/info-panel/../../galleryData.js"], function() {
+FamousFramework.includes("svitlana:remax-banner:house", "HEAD", ["svitlana/remax-banner/house/house-info/../../galleryData.js","svitlana/remax-banner/house/house-info/../../remax-banner.css"], function() {
     (function(){
         'use strict';
         FamousFramework.module('famous:core:node', 'HEAD', {
@@ -307,7 +307,7 @@ FamousFramework.includes("svitlana:remax-banner:house", "HEAD", ["svitlana/remax
     }());
     (function(){
         'use strict';
-        FamousFramework.component('svitlana:remax-banner:house:info-panel', 'HEAD', {
+        FamousFramework.component('svitlana:remax-banner:house:house-info', 'HEAD', {
             'dependencies': { 'famous:core:node': 'HEAD' },
             'famousNodeConstructorName': '',
             'extensions': [{
@@ -335,17 +335,17 @@ FamousFramework.includes("svitlana:remax-banner:house", "HEAD", ["svitlana/remax
                         0.5,
                         0.5
                     ],
+                    'position-z': 3,
                     'size': [
-                        160,
-                        160
+                        100,
+                        40
                     ],
                     'content': function (index) {
-                        var houseInfo = '<table>\n             <tr>\n             <td>City:</td>\n             <td>' + housesData[index].city + '</td>\n             </tr>\n             <tr>\n             <td>Bedrooms:</td>\n             <td>' + housesData[index].beds + '</td>\n             </tr>\n             <tr>\n             <td>Price</td>\n             <td>' + housesData[index].price + '</td>\n             </tr>\n             <tr >\n             <td colspan="2">\n            <a href="' + housesData[index].url + '">More info</a>\n             <td></td>\n             </tr>\n             </table>';
+                        var houseInfo = '\n             <span class="fs-caption">' + housesData[index].city + ',</span>\n             <span class="fs-caption">' + housesData[index].state + '</span>\n             <div class="fs-body-1  text-right"><a href="' + housesData[index].url + '" target="_blank">More info</a></div> ';
                         return houseInfo;
                     },
                     style: {
                         'background-color': 'whitesmoke',
-                        'border-radius': '10px',
                         'text-align': 'left'
                     },
                     'a': {
@@ -353,7 +353,7 @@ FamousFramework.includes("svitlana:remax-banner:house", "HEAD", ["svitlana/remax
                             return {
                                 'color': color,
                                 'font-family': fontFamily,
-                                'font-size': '30px',
+                                'font-size': '10px',
                                 'text-align': 'center'
                             };
                         }
@@ -407,14 +407,19 @@ FamousFramework.includes("svitlana:remax-banner:house", "HEAD", ["svitlana/remax
                 fontFamily: 'Lato, Helvetica, Arial, sans-serif'
             },
             tree: '<famous:core:node id="house-info">\n    </famous:core:node>'
-        }).config({ includes: ['../../galleryData.js'] });
+        }).config({
+            includes: [
+                '../../galleryData.js',
+                '../../remax-banner.css'
+            ]
+        });
     }());
     (function(){
         'use strict';
         FamousFramework.component('svitlana:remax-banner:house', 'HEAD', {
             'dependencies': {
                 'famous:core:node': 'HEAD',
-                'svitlana:remax-banner:house:info-panel': 'HEAD'
+                'svitlana:remax-banner:house:house-info': 'HEAD'
             },
             'famousNodeConstructorName': '',
             'extensions': [{
@@ -427,45 +432,6 @@ FamousFramework.includes("svitlana:remax-banner:house", "HEAD", ["svitlana/remax
             }
         }, {
             behaviors: {
-                '#house': {
-                    'align': [
-                        0.5,
-                        0.5
-                    ],
-                    'mount-point': [
-                        0.5,
-                        0.5
-                    ],
-                    'origin': [
-                        0.5,
-                        0.5
-                    ],
-                    'size': [
-                        160,
-                        160
-                    ]
-                },
-                '#info-panel': {
-                    'align': [
-                        0.5,
-                        0.5
-                    ],
-                    'mount-point': [
-                        0.5,
-                        0.5
-                    ],
-                    'origin': [
-                        0.5,
-                        0.5
-                    ],
-                    'size': [
-                        160,
-                        160
-                    ],
-                    'index': function (index) {
-                        return index;
-                    }
-                },
                 'img': {
                     'align': [
                         0.5,
@@ -483,8 +449,8 @@ FamousFramework.includes("svitlana:remax-banner:house", "HEAD", ["svitlana/remax
                         return src;
                     },
                     'style': {
-                        'width': '160px',
-                        'height': '160px'
+                        'width': '100px',
+                        'height': '100px'
                     }
                 }
             },
@@ -502,8 +468,8 @@ FamousFramework.includes("svitlana:remax-banner:house", "HEAD", ["svitlana/remax
                 src: '',
                 index: 1
             },
-            tree: '<famous:core:node id="house">\n    <img>\n    <svitlana:remax-banner:house:info-panel id="info-panel"></svitlana:remax-banner:house:info-panel>\n    </famous:core:node>'
-        }).config({ imports: { 'svitlana:remax-banner:house': ['info-panel'] } });
+            tree: '<famous:core:node id="house">\n    <img>\n    <svitlana:remax-banner:house:house-info id="house-info"></svitlana:remax-banner:house:house-info>\n    </famous:core:node>'
+        }).config({ imports: { 'svitlana:remax-banner:house': ['house-info'] } });
     }());
     FamousFramework.markComponentAsReady("svitlana:remax-banner:house", "HEAD");
 });

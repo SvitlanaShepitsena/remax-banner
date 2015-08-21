@@ -321,20 +321,16 @@ FamousFramework.includes("svitlana:remax-banner:footer-remax", "HEAD", [], funct
         }, {
             behaviors: {
                 '#footerRemax': {
-                    'size': [
-                        730,
-                        50
-                    ],
+                    'size-proportional-x': function () {
+                        return 1;
+                    },
+                    'size-absolute-y': 30,
                     'align': [
-                        0,
-                        1
-                    ],
-                    'origin': [
-                        0,
+                        0.5,
                         1
                     ],
                     'mount-point': [
-                        0,
+                        0.5,
                         1
                     ],
                     'style': {
@@ -342,14 +338,36 @@ FamousFramework.includes("svitlana:remax-banner:footer-remax", "HEAD", [], funct
                         'box-shadow': 'rgba(13, 16, 81, 0.639216) 0px 0px 10px 0px inset',
                         'background-image': '-webkit-radial-gradient(50% -375px, circle cover, rgb(0, 161, 228) 0px, rgb(0, 93, 153) 750px'
                     },
-                    'position-x': '10',
-                    'position-y': '0',
+                    'position-x': '0',
+                    'position-y': '-10',
                     'position-z': '150'
+                },
+                '#footerSlogan': {
+                    'size': [
+                        126,
+                        14
+                    ],
+                    'mount-point': [
+                        0.95,
+                        0.3
+                    ],
+                    'align': [
+                        0.95,
+                        0.3
+                    ],
+                    'content': '<span>Let us guide you!</span>',
+                    'style': {
+                        'font-family': 'Lucida Sans, Verdana, sans-serif',
+                        'cursor': 'pointer',
+                        'color': 'white',
+                        'font-size': '14px',
+                        'text-shadow': 'rgba(0, 22, 43, 0.901961) 0px -1px 0px'
+                    }
                 }
             },
             events: {},
-            states: {},
-            tree: '<famous:core:node id="footerRemax"> </famous:core:node>'
+            states: { windowWidth: windowWidth },
+            tree: '<famous:core:node id="footerRemax">\n    <famous:core:node id="footerSlogan"></famous:core:node>\n</famous:core:node>'
         });
     }());
     FamousFramework.markComponentAsReady("svitlana:remax-banner:footer-remax", "HEAD");

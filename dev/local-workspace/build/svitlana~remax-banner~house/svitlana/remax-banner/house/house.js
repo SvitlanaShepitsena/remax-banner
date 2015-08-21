@@ -2,27 +2,14 @@
 
 FamousFramework.component('svitlana:remax-banner:house', {
     behaviors: {
-        '#house': {
-            'align': [0.5, 0.5],
-            'mount-point': [0.5, 0.5],
-            'origin': [0.5, 0.5],
-            'size': [160, 160]
-        },
-        '#info-panel': {
-            'align': [0.5, 0.5],
-            'mount-point': [0.5, 0.5],
-            'origin': [0.5, 0.5],
-            'size': [160, 160],
-            'index': '[[identity]]'
-        },
         'img': {
             'align': [0.5, 0.5],
             'mount-point': [0.5, 0.5],
             'origin': [0.5, 0.5],
             'src': '[[identity|src]]',
             'style': {
-                'width': '160px',
-                'height': '160px'
+                'width': '100px',
+                'height': '100px'
             }
         }
 
@@ -37,9 +24,9 @@ FamousFramework.component('svitlana:remax-banner:house', {
         src: '',
         index: 1
     },
-    tree: '<node id="house">\n    <img>\n    <info-panel id="info-panel"></info-panel>\n    </node>'
+    tree: '<node id="house">\n    <img>\n    <house-info id="house-info"></house-info>\n    </node>'
 }).config({
     imports: {
-        'svitlana:remax-banner:house': ['info-panel']
+        'svitlana:remax-banner:house': ['house-info']
     }
 });

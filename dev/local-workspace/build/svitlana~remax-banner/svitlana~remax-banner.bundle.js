@@ -559,24 +559,35 @@ FamousFramework.includes("svitlana:remax-banner", "HEAD", ["svitlana/remax-banne
                     'position-z': 3,
                     'size': [
                         100,
-                        40
+                        25
+                    ],
+                    style: { 'background-color': 'whitesmoke' }
+                },
+                '#house-info-content': {
+                    'align': [
+                        0,
+                        0
+                    ],
+                    'origin': [
+                        0,
+                        0
+                    ],
+                    'position-z': 3,
+                    'size': [
+                        100,
+                        25
                     ],
                     'content': function (index) {
                         console.log(index);
-                        var houseInfo = '\n             <span class="fs-caption">' + housesData[index].city + ',</span>\n             <span class="fs-caption">' + housesData[index].state + '</span>\n             <div class="fs-body-1  text-right"><a href="' + housesData[index].url + '" target="_blank">More info</a></div> ';
+                        var houseInfo = '\n                <a style="display:block;color:#034C89;font-weight:600" href="' + housesData[index].url + '" target="_blank">\n                 <div style="width:auto;margin-left:4px;display:inline-block" class="fs-caption">' + housesData[index].city + ', ' + housesData[index].state + '</div>\n                 <img style="display:inline-block;margin: 4px;2px;float:right" width="16px" height="16px" src="https://s3-us-west-2.amazonaws.com/svet.com/ad/get-info.png"/></a>';
                         return houseInfo;
-                    },
-                    style: {
-                        'background-color': 'whitesmoke',
-                        'text-align': 'left'
                     },
                     'a': {
                         'style': function (color, fontFamily) {
                             return {
-                                'color': color,
+                                'color': 'black',
                                 'font-family': fontFamily,
-                                'font-size': '10px',
-                                'text-align': 'center'
+                                'font-size': '11px'
                             };
                         }
                     }
@@ -628,7 +639,7 @@ FamousFramework.includes("svitlana:remax-banner", "HEAD", ["svitlana/remax-banne
                 color: '#49afeb',
                 fontFamily: 'Lato, Helvetica, Arial, sans-serif'
             },
-            tree: '<famous:core:node id="house-info">\n    </famous:core:node>'
+            tree: '<famous:core:node id="house-info">\n    <famous:core:node id="house-info-content"></famous:core:node>\n</famous:core:node>'
         }).config({
             includes: [
                 '../../galleryData.js',
